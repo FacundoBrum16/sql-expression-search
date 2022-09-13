@@ -1,28 +1,42 @@
 <template>
-<div class="h-screen bg-slate-100">
+<div class="h-screen bg-slate-100 flex">
 
   <!-- LEFT SIDEBAR -->
-  <div class="h-full w-64 bg-slate-900">
+  <div class="h-full w-72 fixed bg-slate-900">
 
   </div>
 
+
+  <div class="h-full ml-72 w-full p-8">
+    <StadisticsBar :data-for-status-bar-component="dataForStatusBarComponent"/>
+  </div>
+  
 <!-- <CustomTable :data-table="dataTable"/> -->
 </div>
   
 </template>
 
 <script>
-// import CustomTable from '../components/CustomTable.vue'
+// import CustomTable from '../components/CustomTable.vue'+
+import StadisticsBar from '../components/StadisticsBar.vue'
 export default {
   name: 'SqlExpressionSearch',
     components: {
     // CustomTable
+    StadisticsBar
   },
   props: {
     
   },
   data() {
     return {
+      dataForStatusBarComponent: [
+        {
+          columnName: "Results",
+          columnValue: "56",
+        }
+      ],
+
       dataTable: {
         colNames:['Territory ID', 'Description', 'Region ID'],
         elementsPerPage: 10,
