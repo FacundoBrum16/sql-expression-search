@@ -1,21 +1,17 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <SqlExpressionSearch/>
+  <!-- <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </nav> -->
+  <router-view/>
 </template>
 
 <script>
-// import HelloWorld from './components/HelloWorld.vue'
-import SqlExpressionSearch from './pages/SqlExpressionSearch.vue'
 import './assets/tailwind.css'
 import './assets/fonts/circular/circular.css'
 
 export default {
   name: 'App',
-  components: {
-    // HelloWorld,
-    SqlExpressionSearch
-  }
 }
 </script>
 
