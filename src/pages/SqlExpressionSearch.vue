@@ -1,330 +1,216 @@
 <template>
-<div class="h-screen bg-slate-100 flex">
+  <div class="h-screen bg-slate-100 flex w-screen overflow-x-hidden">
+    <!-- LEFT SIDEBAR -->
+    <div class="w-72 h-screen bg-slate-900 fixed">
+      <div class="pt-6 px-3">
+        <div
+          class="
+            bg-blue-600
+            rounded-lg
+            flex
+            items-center
+            justify-center
+            w-10
+            h-10
+            mx-3
+          "
+        >
+          <span class="text-white">SQL</span>
+        </div>
 
-  <!-- LEFT SIDEBAR -->
-  <div class="h-full w-72 fixed bg-slate-900">
+        <div class="mt-9">
+          <div class="p-3 leading-none">
+            <span class="block text-blue-400 text-xs font-bold"
+              >FILTER DATA</span
+            >
+            <span class="text-[11px] text-slate-400 font-medium"
+              >Filter by any col of the table</span
+            >
+          </div>
+          <div class="px-3">
+            <SearchInput
+              ref="searchInput"
+              @filtredData="fillSourceTable"
+              :data-for-search="dataForSearch"
+            />
+          </div>
+        </div>
 
+        <div class="mt-9">
+          <div class="p-3 leading-none">
+            <span class="block text-blue-400 text-xs font-bold"
+              >RECENT EXPRESSIONS</span
+            >
+            <span class="text-[11px] text-slate-400 font-medium"
+              >Select one of your recent expressions</span
+            >
+          </div>
+        </div>
+        <div class="h-[38rem] overflow-y-auto">
+          <RecentExpression />
+        </div>
+      </div>
+
+      <div class="h-full w-full">
+        <button
+          class="
+            bg-slate-900
+            w-full
+            bottom-0
+            absolute
+            py-4
+            text-white text-base
+          "
+        >
+          Add Location
+        </button>
+      </div>
+    </div>
+
+    <div class="h-full ml-72 w-full grow-1 px-10 pb-10 py-6 overflow-x-hidden">
+      <div class="flex items-center justify-between w-full mb-8">
+        <span class="text-slate-800 text-lg font-semibold"
+          >SQL Expression Searcher</span
+        >
+        <UploadCsv @getCsvInJsonFormat="getCsvInJsonFormat" />
+      </div>
+      <StadisticsBar
+        class="mb-8"
+        :data-for-status-bar-component="dataForStatusBarComponent"
+      />
+      <SqlInput class="mb-8" />
+      <CustomTable ref="customTable" :data-table="dataTable" />
+    </div>
   </div>
-
-
-  <div class="h-full ml-72 w-full p-8">
-    <StadisticsBar :data-for-status-bar-component="dataForStatusBarComponent"/>
-  </div>
-  
-<!-- <CustomTable :data-table="dataTable"/> -->
-</div>
-  
 </template>
 
 <script>
-// import CustomTable from '../components/CustomTable.vue'+
-import StadisticsBar from '../components/StadisticsBar.vue'
+import CustomTable from "../components/CustomTable.vue";
+import StadisticsBar from "../components/StadisticsBar.vue";
+import SqlInput from "../components/SqlInput.vue";
+import UploadCsv from "../components/UploadCsv.vue";
+import RecentExpression from "../components/RecentExpression.vue";
+import SearchInput from "../components/SearchInput.vue";
+
 export default {
-  name: 'SqlExpressionSearch',
-    components: {
-    // CustomTable
-    StadisticsBar
+  name: "SqlExpressionSearch",
+  components: {
+    CustomTable,
+    StadisticsBar,
+    SqlInput,
+    UploadCsv,
+    RecentExpression,
+    SearchInput,
   },
-  props: {
-    
-  },
+  props: {},
   data() {
     return {
+      dataForSearch: {
+        source: [],
+        filterFields: [],
+      },
+
       dataForStatusBarComponent: [
         {
-          columnName: "Results",
+          columnName: "SQL queries results",
           columnValue: "56",
-        }
+        },
+
+        {
+          columnName: "Filter results",
+          columnValue: "-",
+        },
       ],
 
       dataTable: {
-        colNames:['Territory ID', 'Description', 'Region ID'],
-        elementsPerPage: 10,
-        source:[
-          {
-            "territoryID": "01581",
-            "territoryDescription": "Westboro",
-            "regionID": 1
-          },
-          {
-            "territoryID": "01730",
-            "territoryDescription": "Bedford",
-            "regionID": 1
-          },
-          {
-            "territoryID": "01833",
-            "territoryDescription": "Georgetow",
-            "regionID": 1
-          },
-          {
-            "territoryID": "02116",
-            "territoryDescription": "Boston",
-            "regionID": 1
-          },
-          {
-            "territoryID": "02139",
-            "territoryDescription": "Cambridge",
-            "regionID": 1
-          },
-          {
-            "territoryID": "02184",
-            "territoryDescription": "Braintree",
-            "regionID": 1
-          },
-          {
-            "territoryID": "02903",
-            "territoryDescription": "Providence",
-            "regionID": 1
-          },
-          {
-            "territoryID": "03049",
-            "territoryDescription": "Hollis",
-            "regionID": 3
-          },
-          {
-            "territoryID": "03801",
-            "territoryDescription": "Portsmouth",
-            "regionID": 3
-          },
-          {
-            "territoryID": "06897",
-            "territoryDescription": "Wilton",
-            "regionID": 1
-          },
-          {
-            "territoryID": "07960",
-            "territoryDescription": "Morristown",
-            "regionID": 1
-          },
-          {
-            "territoryID": "08837",
-            "territoryDescription": "Edison",
-            "regionID": 1
-          },
-          {
-            "territoryID": 10019,
-            "territoryDescription": "NewYork",
-            "regionID": 1
-          },
-          {
-            "territoryID": 10038,
-            "territoryDescription": "NewYork",
-            "regionID": 1
-          },
-          {
-            "territoryID": 11747,
-            "territoryDescription": "Mellvile",
-            "regionID": 1
-          },
-          {
-            "territoryID": 14450,
-            "territoryDescription": "Fairport",
-            "regionID": 1
-          },
-          {
-            "territoryID": 19428,
-            "territoryDescription": "Philadelphia",
-            "regionID": 3
-          },
-          {
-            "territoryID": 19713,
-            "territoryDescription": "Neward",
-            "regionID": 1
-          },
-          {
-            "territoryID": 20852,
-            "territoryDescription": "Rockville",
-            "regionID": 1
-          },
-          {
-            "territoryID": 27403,
-            "territoryDescription": "Greensboro",
-            "regionID": 1
-          },
-          {
-            "territoryID": 27511,
-            "territoryDescription": "Cary",
-            "regionID": 1
-          },
-          {
-            "territoryID": 29202,
-            "territoryDescription": "Columbia",
-            "regionID": 4
-          },
-          {
-            "territoryID": 30346,
-            "territoryDescription": "Atlanta",
-            "regionID": 4
-          },
-          {
-            "territoryID": 31406,
-            "territoryDescription": "Savannah",
-            "regionID": 4
-          },
-          {
-            "territoryID": 32859,
-            "territoryDescription": "Orlando",
-            "regionID": 4
-          },
-          {
-            "territoryID": 33607,
-            "territoryDescription": "Tampa",
-            "regionID": 4
-          },
-          {
-            "territoryID": 40222,
-            "territoryDescription": "Louisville",
-            "regionID": 1
-          },
-          {
-            "territoryID": 44122,
-            "territoryDescription": "Beachwood",
-            "regionID": 3
-          },
-          {
-            "territoryID": 45839,
-            "territoryDescription": "Findlay",
-            "regionID": 3
-          },
-          {
-            "territoryID": 48075,
-            "territoryDescription": "Southfield",
-            "regionID": 3
-          },
-          {
-            "territoryID": 48084,
-            "territoryDescription": "Troy",
-            "regionID": 3
-          },
-          {
-            "territoryID": 48304,
-            "territoryDescription": "BloomfieldHills",
-            "regionID": 3
-          },
-          {
-            "territoryID": 53404,
-            "territoryDescription": "Racine",
-            "regionID": 3
-          },
-          {
-            "territoryID": 55113,
-            "territoryDescription": "Roseville",
-            "regionID": 3
-          },
-          {
-            "territoryID": 55439,
-            "territoryDescription": "Minneapolis",
-            "regionID": 3
-          },
-          {
-            "territoryID": 60179,
-            "territoryDescription": "HoffmanEstates",
-            "regionID": 2
-          },
-          {
-            "territoryID": 60601,
-            "territoryDescription": "Chicago",
-            "regionID": 2
-          },
-          {
-            "territoryID": 72716,
-            "territoryDescription": "Bentonville",
-            "regionID": 4
-          },
-          {
-            "territoryID": 75234,
-            "territoryDescription": "Dallas",
-            "regionID": 4
-          },
-          {
-            "territoryID": 78759,
-            "territoryDescription": "Austin",
-            "regionID": 4
-          },
-          {
-            "territoryID": 80202,
-            "territoryDescription": "Denver",
-            "regionID": 2
-          },
-          {
-            "territoryID": 80909,
-            "territoryDescription": "ColoradoSprings",
-            "regionID": 2
-          },
-          {
-            "territoryID": 85014,
-            "territoryDescription": "Phoenix",
-            "regionID": 2
-          },
-          {
-            "territoryID": 85251,
-            "territoryDescription": "Scottsdale",
-            "regionID": 2
-          },
-          {
-            "territoryID": 90405,
-            "territoryDescription": "SantaMonica",
-            "regionID": 2
-          },
-          {
-            "territoryID": 94025,
-            "territoryDescription": "MenloPark",
-            "regionID": 2
-          },
-          {
-            "territoryID": 94105,
-            "territoryDescription": "SanFrancisco",
-            "regionID": 2
-          },
-          {
-            "territoryID": 95008,
-            "territoryDescription": "Campbell",
-            "regionID": 2
-          },
-          {
-            "territoryID": 95054,
-            "territoryDescription": "SantaClara",
-            "regionID": 2
-          },
-          {
-            "territoryID": 95060,
-            "territoryDescription": "SantaCruz",
-            "regionID": 2
-          },
-          {
-            "territoryID": 98004,
-            "territoryDescription": "Bellevue",
-            "regionID": 2
-          },
-          {
-            "territoryID": 98052,
-            "territoryDescription": "Redmond",
-            "regionID": 2
-          },
-          {
-            "territoryID": 98104,
-            "territoryDescription": "Seattle",
-            "regionID": 2
-          }
-        ]
+        elementsPerPage: 8,
+        source: [],
+      },
 
-
-
-
-
-
-
-
-      }
-
-
+      hardCodedResults: {
+        first: [
+          {
+            territoryID: "01581",
+            territoryDescription: "Westboro",
+            regionID: 1,
+          },
+          {
+            territoryID: "01730",
+            territoryDescription: "Bedford",
+            regionID: 1,
+          },
+          {
+            territoryID: "01833",
+            territoryDescription: "Georgetow",
+            regionID: 1,
+          },
+          {
+            territoryID: "02116",
+            territoryDescription: "Boston",
+            regionID: 1,
+          },
+        ],
+        second: [],
+        xjasdjad: [],
+      },
     };
-  }
-  
-  
+  },
+  methods: {
+    fillSourceTable(value) {
+      //fill dataForStatusBarComponent
+      this.dataForStatusBarComponent[1].columnValue = value.length.toString();
 
-  
-}
+      //set new data for the table on filter action
+      this.dataTable.source = value || [];
+      //reload table on filter action
+      this.$refs.customTable.getPageData(1);
+    },
 
+    getCsvInJsonFormat(value) {
+      this.dataTable.source = value;
+
+      //search
+      this.dataForSearch.source = value;
+      this.dataForStatusBarComponent[1].columnValue = "-";
+      this.$refs.searchInput.clearInput();
+
+      //reload table on upload CSV action
+      this.$refs.customTable.getPageData(1);
+      this.dataForSearch.filterFields = this.getArrayKeys();
+    },
+
+    getArrayKeys() {
+      return Object.keys(this.dataTable?.source[0] || []);
+    },
+  },
+
+  created() {
+    let source = [
+      {
+        territoryID: "01581",
+        territoryDescription: "Westboro",
+        regionID: 1,
+      },
+      {
+        territoryID: "01730",
+        territoryDescription: "Bedford",
+        regionID: 1,
+      },
+      {
+        territoryID: "01833",
+        territoryDescription: "Georgetow",
+        regionID: 1,
+      },
+      {
+        territoryID: "02116",
+        territoryDescription: "Boston",
+        regionID: 1,
+      },
+    ];
+    this.dataTable.source = source || [];
+    this.dataForSearch.source = source || [];
+    this.dataForSearch.filterFields = this.getArrayKeys();
+  },
+};
 </script>
 
