@@ -1,0 +1,111 @@
+<template>
+  <div class="overflow-x-auto relative px-6 pb-6 pt-3 rounded-2xl shadow-table-shadow">
+    <table class="w-full text-sm text-left ">
+      <thead
+        class="
+          text-sm text-slate-500 font-semibold
+        "
+      >
+        <tr>
+          <th v-for="th in tableCols" :key="th" class="py-3 px-6 border-b pb-6">
+            <span>{{ th }}</span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="tr in tableData"
+          :key="tr"
+          class="bg-white border-b text-slate-800 font-normal"
+        >
+          <td v-for="td in getArrayKeys" :key="td" class="py-4 px-6">
+            {{ tr[td] }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div
+      class="
+        w-full
+        flex
+        justify-end
+        text-gray-500
+        pt-6
+        font-light
+      "
+    >
+    <div class="flex gap-x-8 items-center">
+      <span>Page {{ this.currentPage }} of {{ this.amountOfPages() }}</span>
+      <div class="cursor-pointer flex items-center" @click="getPreviousPage()"><img class="w-3" src="../assets/icons/previous-icon.svg" alt="" /></div>
+      <div class="cursor-pointer flex items-center" @click="getNextPage()"><img class="w-3" src="../assets/icons/next-icon.svg" alt="" /></div>
+    </div>
+
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "CustomTable",
+  props: {
+    dataTable: Object,
+  },
+  data() {
+    return {
+      paginatedSource: [],
+      currentPage: 1,
+    };
+  },
+
+  created() {
+    this.getPageData(1);
+  },
+
+  computed: {
+    tableCols() {
+      return this.dataTable.colNames || [];
+    },
+
+    tableData() {
+      return this.paginatedSource || [];
+    },
+
+    getArrayKeys(){
+        return Object.keys(this.dataTable.source[0]) || []
+    }
+  },
+
+  methods: {
+    amountOfPages() {
+      return Math.ceil(
+        this.dataTable.source.length / this.dataTable.elementsPerPage
+      );
+    },
+
+    getPageData(nroPagina) {
+      this.paginatedSource = [];
+      this.currentPage = nroPagina;
+      let start =
+        nroPagina * this.dataTable.elementsPerPage -
+        this.dataTable.elementsPerPage;
+      let end = nroPagina * this.dataTable.elementsPerPage;
+
+      this.paginatedSource = this.dataTable.source.slice(start, end);
+    },
+
+    getPreviousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+      this.getPageData(this.currentPage);
+    },
+
+    getNextPage() {
+      if (this.currentPage < this.amountOfPages()) {
+        this.currentPage++;
+      }
+      this.getPageData(this.currentPage);
+    },
+  },
+};
+</script>
