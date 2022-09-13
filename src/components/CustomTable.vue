@@ -1,13 +1,13 @@
 <template>
-  <div class="overflow-x-auto relative px-6 pb-6 pt-3 rounded-2xl shadow-table-shadow">
+  <div class="overflow-x-auto relative px-6 pb-6 pt-3 rounded-2xl shadow-table-shadow bg-white max-w-full">
     <table class="w-full text-sm text-left ">
       <thead
         class="
-          text-sm text-slate-500 font-semibold
+          text-xs text-slate-500 font-semibold
         "
       >
         <tr>
-          <th v-for="th in tableCols" :key="th" class="py-3 px-6 border-b pb-6">
+          <th v-for="th in getArrayKeys" :key="th" class="py-3 px-6 border-b pb-6 ">
             <span>{{ th }}</span>
           </th>
         </tr>
@@ -18,7 +18,7 @@
           :key="tr"
           class="bg-white border-b text-slate-800 font-normal"
         >
-          <td v-for="td in getArrayKeys" :key="td" class="py-4 px-6">
+          <td v-for="td in getArrayKeys" :key="td" class="py-4 px-6 truncate">
             {{ tr[td] }}
           </td>
         </tr>
@@ -36,8 +36,8 @@
     >
     <div class="flex gap-x-8 items-center">
       <span>Page {{ this.currentPage }} of {{ this.amountOfPages() }}</span>
-      <div class="cursor-pointer flex items-center" @click="getPreviousPage()"><img class="w-3" src="../assets/icons/previous-icon.svg" alt="" /></div>
-      <div class="cursor-pointer flex items-center" @click="getNextPage()"><img class="w-3" src="../assets/icons/next-icon.svg" alt="" /></div>
+      <button class="flex items-center" @click="getPreviousPage()"><img class="w-3" src="../assets/icons/previous-icon.svg" alt="" /></button>
+      <button class="flex items-center" @click="getNextPage()"><img class="w-3" src="../assets/icons/next-icon.svg" alt="" /></button>
     </div>
 
     </div>
@@ -57,22 +57,14 @@ export default {
     };
   },
 
-  created() {
-    this.getPageData(1);
-  },
-
   computed: {
-    tableCols() {
-      return this.dataTable.colNames || [];
-    },
-
     tableData() {
       return this.paginatedSource || [];
     },
 
     getArrayKeys(){
-        return Object.keys(this.dataTable.source[0]) || []
-    }
+        return Object.keys(this.dataTable.source[0] || [])
+    },
   },
 
   methods: {
@@ -106,6 +98,10 @@ export default {
       }
       this.getPageData(this.currentPage);
     },
+  },
+
+  created() {
+    this.getPageData(1);
   },
 };
 </script>
