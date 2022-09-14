@@ -48,6 +48,7 @@
         </div>
         <div class="h-[38rem] overflow-y-auto">
           <router-link
+            @click="$event.stopPropagation()"
             v-for="exp in historyOfExpressions"
             :key="exp"
             :to="{ query: { expressionsId: exp.id } }"
