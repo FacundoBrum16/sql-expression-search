@@ -1,0 +1,372 @@
+[
+    {
+        "id": "21312322",
+        "expression": "SELECT column FROM table_name;",
+        "filtredData": [
+            {
+                "territoryID": "01581",
+                "territoryDescription": "Westboro",
+                "regionID": 1
+            },
+            {
+                "territoryID": "01730",
+                "territoryDescription": "Bedford",
+                "regionID": 1
+            },
+            {
+                "territoryID": "01833",
+                "territoryDescription": "Georgetow",
+                "regionID": 1
+            },
+            {
+                "territoryID": "02116",
+                "territoryDescription": "Boston",
+                "regionID": 1
+            }
+        ]
+    },
+    {
+        "id": "12342321",
+        "expression": "SELECT column FROM table_name WHERE SINGLE_VALUE_MATCHING_EXPRESSION;",
+        "filtredData": [
+            {
+                "id": "7.3.6",
+                "first_name": true,
+                "last_name": "Deble",
+                "gender": "Gotemba",
+                "company_name": "Reallinks"
+            },
+            {
+                "id": 0.18,
+                "first_name": false,
+                "last_name": "Abramov",
+                "gender": "Itsandzéni",
+                "company_name": "Voomm"
+            },
+            {
+                "id": "0.3.3",
+                "first_name": true,
+                "last_name": "Barnson",
+                "gender": "Itabira",
+                "company_name": "Oyonder"
+            },
+            {
+                "id": 0.57,
+                "first_name": true,
+                "last_name": "Phythean",
+                "gender": "Ciriri",
+                "company_name": "Photolist"
+            },
+            {
+                "id": 9.93,
+                "first_name": false,
+                "last_name": "Fitzsymons",
+                "gender": "Łaskarzew",
+                "company_name": "Meezzy"
+            },
+            {
+                "id": 2.9,
+                "first_name": true,
+                "last_name": "Ksandra",
+                "gender": "Ketang",
+                "company_name": "Realblab"
+            },
+            {
+                "id": 0.13,
+                "first_name": true,
+                "last_name": "McCrackan",
+                "gender": "Stockholm",
+                "company_name": "Gigazoom"
+            },
+            {
+                "id": 0.29,
+                "first_name": false,
+                "last_name": "MacQuist",
+                "gender": "Köping",
+                "company_name": "Ainyx"
+            },
+            {
+                "id": 0.51,
+                "first_name": true,
+                "last_name": "Lodovichi",
+                "gender": "Lapuz",
+                "company_name": "Zooveo"
+            },
+            {
+                "id": "0.5.7",
+                "first_name": true,
+                "last_name": "Greenrodd",
+                "gender": "Presidente Venceslau",
+                "company_name": "Gabvine"
+            },
+            {
+                "id": 7.6,
+                "first_name": true,
+                "last_name": "Clackers",
+                "gender": "Wangmeng",
+                "company_name": "Yadel"
+            },
+            {
+                "id": "1.5.8",
+                "first_name": true,
+                "last_name": "Rottcher",
+                "gender": "Bangad",
+                "company_name": "InnoZ"
+            },
+            {
+                "id": "5.9.4",
+                "first_name": true,
+                "last_name": "Chesshire",
+                "gender": "Jatiwangi",
+                "company_name": "Babblestorm"
+            },
+            {
+                "id": 9.9,
+                "first_name": false,
+                "last_name": "Everex",
+                "gender": "Qal‘ah-ye Shāhī",
+                "company_name": "Edgeblab"
+            },
+            {
+                "id": 0.41,
+                "first_name": false,
+                "last_name": "Chese",
+                "gender": "Przyborów",
+                "company_name": "Kwilith"
+            },
+            {
+                "id": "7.5.7",
+                "first_name": false,
+                "last_name": "Winscum",
+                "gender": "Qiaolin",
+                "company_name": "Dabvine"
+            },
+            {
+                "id": 0.37,
+                "first_name": false,
+                "last_name": "Brotherheed",
+                "gender": "Xinbei",
+                "company_name": "Aimbo"
+            },
+            {
+                "id": 1.4,
+                "first_name": false,
+                "last_name": "Cordeux",
+                "gender": "Alofi",
+                "company_name": "Abata"
+            },
+            {
+                "id": 6.15,
+                "first_name": false,
+                "last_name": "Brightling",
+                "gender": "San Rafael",
+                "company_name": "Zoomdog"
+            },
+            {
+                "id": 0.65,
+                "first_name": false,
+                "last_name": "Cosgry",
+                "gender": "Mierzęcice",
+                "company_name": "Plajo"
+            },
+            {
+                "id": "8.0.9",
+                "first_name": false,
+                "last_name": "Minister",
+                "gender": "Pacucha",
+                "company_name": "Demivee"
+            },
+            {
+                "id": "1.8.6",
+                "first_name": false,
+                "last_name": "Biddles",
+                "gender": "Dū Qal‘ah",
+                "company_name": "Minyx"
+            },
+            {
+                "id": 0.35,
+                "first_name": true,
+                "last_name": "Cranny",
+                "gender": "Yujia",
+                "company_name": "Katz"
+            },
+            {
+                "id": "0.2.3",
+                "first_name": true,
+                "last_name": "Sale",
+                "gender": "Izbicko",
+                "company_name": "Livetube"
+            },
+            {
+                "id": "0.6.2",
+                "first_name": true,
+                "last_name": "Decreuze",
+                "gender": "Sonta",
+                "company_name": "Voolia"
+            },
+            {
+                "id": 9.38,
+                "first_name": true,
+                "last_name": "Clemens",
+                "gender": "Amparafaravola",
+                "company_name": "Shufflebeat"
+            },
+            {
+                "id": "0.1.6",
+                "first_name": true,
+                "last_name": "Grinnikov",
+                "gender": "Thị Trấn Việt Lâm",
+                "company_name": "JumpXS"
+            },
+            {
+                "id": "0.6.2",
+                "first_name": false,
+                "last_name": "Castagnone",
+                "gender": "Chantal",
+                "company_name": "Centizu"
+            },
+            {
+                "id": 8.03,
+                "first_name": false,
+                "last_name": "Guice",
+                "gender": "Hidalgo",
+                "company_name": "Demizz"
+            },
+            {
+                "id": "0.2.4",
+                "first_name": true,
+                "last_name": "Lutzmann",
+                "gender": "Anápolis",
+                "company_name": "Topdrive"
+            },
+            {
+                "id": 0.43,
+                "first_name": false,
+                "last_name": "Tacker",
+                "gender": "Bezlyudivka",
+                "company_name": "Blogspan"
+            },
+            {
+                "id": "4.9.9",
+                "first_name": true,
+                "last_name": "Twitty",
+                "gender": "Yanmenkou",
+                "company_name": "Eidel"
+            },
+            {
+                "id": "1.0.7",
+                "first_name": false,
+                "last_name": "Matelaitis",
+                "gender": "Tawau",
+                "company_name": "Jayo"
+            },
+            {
+                "id": 9.2,
+                "first_name": true,
+                "last_name": "Duxfield",
+                "gender": "Chang’an",
+                "company_name": "Oodoo"
+            },
+            {
+                "id": 9.82,
+                "first_name": true,
+                "last_name": "Hurler",
+                "gender": "Dan Sadau",
+                "company_name": "Demimbu"
+            },
+            {
+                "id": "7.4.3",
+                "first_name": true,
+                "last_name": "Kiltie",
+                "gender": "Ledenice",
+                "company_name": "Wikizz"
+            },
+            {
+                "id": 1.57,
+                "first_name": true,
+                "last_name": "Cardall",
+                "gender": "Linxi",
+                "company_name": "Avaveo"
+            },
+            {
+                "id": "0.9.5",
+                "first_name": false,
+                "last_name": "Tabbernor",
+                "gender": "eSikhawini",
+                "company_name": "Rhybox"
+            },
+            {
+                "id": "5.7.8",
+                "first_name": false,
+                "last_name": "Eddington",
+                "gender": "Matara",
+                "company_name": "Yadel"
+            },
+            {
+                "id": 9.3,
+                "first_name": false,
+                "last_name": "Rudloff",
+                "gender": "Arcos de Valdevez",
+                "company_name": "Vitz"
+            },
+            {
+                "id": 0.61,
+                "first_name": false,
+                "last_name": "Kedie",
+                "gender": "Jardim do Seridó",
+                "company_name": "Skaboo"
+            }
+        ]
+    },
+    {
+        "id": "12231231212",
+        "expression": "SELECT * FROM table_name;",
+        "filtredData": [
+            {
+                "heroId": "2322321112",
+                "power": "Fly",
+                "description": "Lorem ipsum dolor sit ammet"
+            },
+            {
+                "heroId": "232131123",
+                "power": "Punch",
+                "description": "Lorem ipsum dolor sit ammet"
+            },
+            {
+                "heroId": "232ew3q112",
+                "power": "Flame",
+                "description": "Lorem asdaslor sit a as asd asammet"
+            },
+            {
+                "heroId": "23qw211ss2",
+                "power": "Air",
+                "description": "Lorem ip asd a sum dolor sit ammet"
+            },
+            {
+                "heroId": "2321ew1ss2",
+                "power": "Air",
+                "description": "Lorem ip asd a sum dolor sit ammet"
+            },
+            {
+                "heroId": "23ee211ss2",
+                "power": "Air",
+                "description": "Lorem ip asd a sum dolor sit ammet"
+            },
+            {
+                "heroId": "2321weq1ss2",
+                "power": "Air",
+                "description": "Lorem ip asd a sum dolor sit ammet"
+            },
+            {
+                "heroId": "232we11ss2",
+                "power": "Air",
+                "description": "Lorem ip asd a sum dolor sit ammet"
+            },
+            {
+                "heroId": "232asd11ss2",
+                "power": "Air",
+                "description": "Lorem ip asd a sum dolor sit ammet"
+            }
+        ]
+    }
+]
