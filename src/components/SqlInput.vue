@@ -1,9 +1,8 @@
 <template>
   <div class="relative h-min">
     <textarea
-      v-model="textValue"
+      v-model="this.textValue"
       class="
-        
         text-sm
         resize-none
         p-2
@@ -17,7 +16,24 @@
       placeholder="Write a SQL expression"
     >
     </textarea>
-    <button class="absolute bottom-3 right-1.5 text-white bg-slate-400 hover:bg-slate-500 py-0.5 px-5 rounded-lg text-sm">Run SQL</button>
+    <button
+      :class="{'disabledDiv' : !this.textValue.length}"
+      @click="this.$emit('saveExpression', this.textValue)"
+      class="
+        absolute
+        bottom-3
+        right-1.5
+        text-white
+        bg-slate-400
+        hover:bg-slate-500
+        py-0.5
+        px-5
+        rounded-lg
+        text-sm
+      "
+    >
+      Run SQL (Save)
+    </button>
   </div>
 </template>
 
@@ -25,12 +41,30 @@
 export default {
   name: "SqlInput",
   props: {
-    msg: String,
+    textValueForSqlInput: String,
   },
+  emits: ["saveExpression"],
+  computed: {},
   data() {
     return {
       textValue: "",
     };
+  },
+  watch: {
+    textValueForSqlInput: {
+      inmediate: true,
+      handler() {
+        this.textValue = this.textValueForSqlInput;
+      },
+    },
+  },
+  methods: {
+    clearInput() {
+      this.textValue = "";
+    },
+  },
+  created() {
+    this.textValue = this.textValueForSqlInput;
   },
 };
 </script>

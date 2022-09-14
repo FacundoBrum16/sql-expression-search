@@ -29,7 +29,7 @@
         w-full
         flex
         justify-end
-        text-gray-500
+        text-slate-500
         pt-6
         font-light
       "
