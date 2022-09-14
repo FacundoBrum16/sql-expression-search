@@ -13,6 +13,6 @@ export default {
 
 <style>
 #app {
-  font-family: Circular;
+  font-family: Circular, Arial, Helvetica, sans-serif;
 }
 </style>

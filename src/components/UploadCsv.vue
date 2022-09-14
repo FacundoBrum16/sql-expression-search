@@ -1,6 +1,6 @@
 <template>
     <label for="file-input" class="cursor-pointer bg-blue-600 hover:bg-blue-700 flex items-center px-5 py-2 rounded-md gap-x-2 transform transition-all hover:scale-105 duration-300">
-        <img class="w-5" src="../assets/icons/upload-icon.svg" alt="Upload icon">
+        <img class="w-5 h-5" src="../assets/icons/upload-icon.svg" alt="Upload icon">
         <span class="text-white text-sm font-medium">Upload CSV</span>
     </label>
 

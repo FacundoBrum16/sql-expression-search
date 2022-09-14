@@ -36,8 +36,8 @@
     >
     <div class="flex gap-x-8 items-center">
       <span>Page {{ this.currentPage }} of {{ this.amountOfPages() }}</span>
-      <button class="flex items-center" @click="getPreviousPage()"><img class="w-3" src="../assets/icons/previous-icon.svg" alt="" /></button>
-      <button class="flex items-center" @click="getNextPage()"><img class="w-3" src="../assets/icons/next-icon.svg" alt="" /></button>
+      <button class="flex items-center" @click="getPreviousPage()"><img class="w-3 h-3" src="../assets/icons/previous-icon.svg" alt="" /></button>
+      <button class="flex items-center" @click="getNextPage()"><img class="w-3 h-3" src="../assets/icons/next-icon.svg" alt="" /></button>
     </div>
 
     </div>
