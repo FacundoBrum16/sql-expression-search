@@ -14,6 +14,7 @@ export default {
   props: {
     msg: String
   },
+  emits: ["getCsvInJsonFormat"],
 
   methods:{
     csvToJson(csv){
@@ -24,7 +25,6 @@ export default {
         return Object.fromEntries(header.map((h, i) => [h, fields[i]]))
       })
 
-      console.log(output)
       this.$emit('getCsvInJsonFormat', output)
     },
 

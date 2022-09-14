@@ -27,8 +27,8 @@ export default {
       inputData: "",
       optionsFiltered: []
     }
-   
   },
+  emits: ["filtredData"],
   methods:{
     onKeySearch() {
         if (this.inputData) {
